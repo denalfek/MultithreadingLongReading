@@ -5,7 +5,15 @@ namespace MultiThreadingLongReading.Services
     public static class ReaderService
     {
         private static string _file;
-        private static object _locker;
+        private static readonly object _locker = new object();
+        private static readonly Semaphore _semaphore;
+
+        public static string TryingSemaphore()
+        {
+            //_semaphore.
+
+            return $"Hello from thread {Thread.CurrentThread.ManagedThreadId}";
+        }
 
         public static string ReadFile()
         {
